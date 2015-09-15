@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Slideshow</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+			</div>
+
+		</div>
+
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+
+			$(document).ready(function(){
+				var template = $('#section').html();
+				var slides = $('.slides');
+
+				[
+					{
+						title: "cartodb.com",
+						url: "http://www.cartodb.com"
+					},{
+						title: "Ashley Madison map",
+						url: "https://tecnilogica.cartodb.com/viz/56e702fe-4693-11e5-8f79-0e853d047bba/embed_map"
+					},{
+						title: "Displaying dynamic data",
+						title: "http://srogers.cartodb.com/viz/1b9b0670-8d15-11e3-8ddf-0edd25b1ac90/embed_map"
+					},{
+						title: "Tickets in Madrid over one month",
+						url: "https://team.cartodb.com/u/piensaenpixel/viz/72a358fe-0894-11e5-9e8a-0e018d66dc29/embed_map"
+					},{
+						title: "Complex data that is understandable",
+						url: "https://team.cartodb.com/u/piensaenpixel/viz/8a6530e0-5239-11e5-9cc4-0e0c41326911/embed_map"
+					}
+				].forEach(function(d){
+					slides.append(
+						template.replace('{{title}}',d.title).replace('{{url}}',d.url)
+					);
+				});
+
+
+
+				// Full list of configuration options available at:
+				// https://github.com/hakimel/reveal.js#configuration
+				Reveal.initialize({
+					controls: true,
+					progress: true,
+					history: true,
+					center: true,
+					loop: true,
+					autoSlide: 15000,
+					transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+					// Optional reveal.js plugins
+					dependencies: [
+						{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+						{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+						{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+						{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+						{ src: 'plugin/zoom-js/zoom.js', async: true },
+						{ src: 'plugin/notes/notes.js', async: true }
+					]
+				});
+			});
+		</script>
+
+		<script type="text/template" id="section">
+				<section>
+					<h2>{{title}}</h2>
+					<iframe src="{{url}}" width="100%" height="600px" frameborder="0" marginwidth="0" marginheight="0" scrolling="yes" style="border:3px solid #666; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+				</section>
+		</script>
+
+	</body>
+</html>
