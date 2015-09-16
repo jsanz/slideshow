@@ -29,6 +29,15 @@
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
 
+		<style type="text/css">
+		.reveal h2{
+			font-size: 1em;
+		}
+		.slides {
+			width: 1200px;
+		}
+		</style>
+
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
@@ -75,7 +84,7 @@
 						title: "Sunrise of twitter",
 						url: "http://cartodb.s3.amazonaws.com/static_vizz/sunrise.html?title=true&description=true&search=false&shareable=true&cartodb_logo=true&layer_selector=false&legends=false&scrollwheel=true&sublayer_options=1%7C1&sql=&zoom=2&center_lat=22.917922936146045&center_lon=51.328125#"
 					},{
-						title: "Tickets in Madrid over one month",
+						title: "Tickets in Madrid",
 						url: "https://team.cartodb.com/u/piensaenpixel/viz/72a358fe-0894-11e5-9e8a-0e018d66dc29/embed_map"
 					},{
 						title: "Complex data that is understandable",
@@ -86,7 +95,7 @@
 					}
 				].forEach(function(d){
 					slides.append(
-						template.replace('{{title}}',d.title).replace('{{url}}',d.url)
+						template.replace('{{title}}',d.title).replace(/{{url}}/gi,d.url)
 					);
 				});
 
@@ -118,7 +127,7 @@
 
 		<script type="text/template" id="section">
 				<section>
-					<h2>{{title}}</h2>
+					<h2><a target="blank" href="{{url}}">&raquo;</a> {{title}}</h2>
 					<iframe src="{{url}}" width="100%" height="600px" frameborder="0" marginwidth="0" marginheight="0" scrolling="yes" style="border:3px solid #666; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
 				</section>
 		</script>
