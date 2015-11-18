@@ -27,7 +27,7 @@ $(document).ready(function(){
 	// TODO support also CSV by url
 
 	new cartodb.SQL({'user': user})
-	.execute('select url,title from ' + table + ' limit 2')
+	.execute('select url,title from ' + table + ' order by slide')
 	.done(function(data){
 		$('h2.loading').remove();
 		data.rows.forEach(function(d){
