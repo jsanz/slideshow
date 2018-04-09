@@ -39,7 +39,9 @@ $(document).ready(function(){
 		// Full list of configuration options available at:
 		// https://github.com/hakimel/reveal.js#configuration
 		Reveal.initialize({
-			controls: true,
+			width: '100%',
+			height: '100vh',
+			controls: false,
 			progress: true,
 			history: true,
 			center: true,
